@@ -27,18 +27,29 @@ function Cart() {
           ))}
         </div>
       </div>
-      <div className="flex justify-between align-center">
-        <Link to="/">
-          <Button variant="secondary" classes="bg-white  uppercase w-344">
+      <div className="flex flex-col md:flex-row md:justify-between align-center">
+        {cartProducts.length > 0 && (
+          <p className="text-md w-full flex justify-between md:hidden uppercase my-0 mt-xl ">
+            <span>Total:</span> <span>{totalPrice} EUR</span>
+          </p>
+        )}
+        <Link to="/" className="mt-md w-full md:w-auto">
+          <Button
+            variant="secondary"
+            className="bg-white uppercase w-full md:w-260"
+          >
             continue shopping
           </Button>
         </Link>
-        <div className="flex align-center gap-md">
-          <p className="text-md uppercase my-0 mt-xl ">
-            Total: {totalPrice} EUR
-          </p>
-          <Button classes="uppercase w-344">Pay</Button>
-        </div>
+
+        {cartProducts.length > 0 && (
+          <div className="flex  justify-end align-center w-full gap-md mt-md">
+            <p className="text-md  hidden md:block uppercase my-0  ">
+              Total: {totalPrice} EUR
+            </p>
+            <Button className="uppercase   md:w-260">Pay</Button>
+          </div>
+        )}
       </div>
     </section>
   );

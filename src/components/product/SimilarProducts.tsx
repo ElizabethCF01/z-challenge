@@ -4,12 +4,12 @@ import ProductCard from "./Card";
 export default function SimilarProducts({ products }: { products: Product[] }) {
   return (
     <div className="w-full overflow-x-auto py-md">
-      <div className="flex gap-sm min-w-max">
+      <div className="flex min-w-max ">
         {products.map((product, idx) => (
           <ProductCard
             product={product}
             key={product.id + idx}
-            classes="w-344 flex-none"
+            className={`w-344 flex-none ${idx > 0 && "border-l-none"}`}
           />
         ))}
       </div>

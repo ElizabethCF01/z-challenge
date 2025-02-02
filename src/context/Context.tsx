@@ -10,6 +10,7 @@ const CartContext = createContext<ICartContext>({
   totalPrice: 0,
   setTotalPrice: () => {},
 });
+
 export const useContextElement = () => {
   return useContext(CartContext);
 };
@@ -32,15 +33,10 @@ export default function Context({ children }: { children: React.ReactNode }) {
         quantity: 1,
       };
       setCartProducts((pre) => [...pre, item]);
-      console.log("added to cart --", item);
     }
   };
-  const isAddedToCartProducts = (id: string) => {
-    if (cartProducts.filter((elm) => elm.id == id)[0]) {
-      return true;
-    }
-    return false;
-  };
+  const isAddedToCartProducts = (id: string) =>
+    cartProducts.some((elm) => elm.id == id);
 
   useEffect(() => {
     if (localStorage.getItem("cartList") != null) {

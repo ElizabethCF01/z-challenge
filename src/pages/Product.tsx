@@ -5,10 +5,10 @@ import { useNavigate, useParams } from "react-router";
 import ColorPicker from "../components/shared/ColorPicker";
 import StoragePicker from "../components/shared/StoragePicker";
 import Button from "../components/shared/Button";
-import Specification from "../components/product/Specification";
 import backIcon from "../assets/arrow-left-icon.svg";
 import SimilarProducts from "../components/product/SimilarProducts";
 import { useContextElement } from "../context/Context";
+import Specifications from "../components/product/Specifications";
 
 function Product() {
   const { id } = useParams();
@@ -20,8 +20,7 @@ function Product() {
   const [color, setColor] = useState("");
   const [storage, setStorage] = useState("");
 
-  const { addProductToCart, isAddedToCartProducts, cartProducts } =
-    useContextElement();
+  const { addProductToCart, isAddedToCartProducts } = useContextElement();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -67,7 +66,6 @@ function Product() {
       price: price ?? product.basePrice,
       imageUrl: imageUrl ?? product.colorOptions[0].imageUrl,
     });
-    console.log("added to cart", cartProducts);
   };
 
   return (
@@ -83,16 +81,27 @@ function Product() {
             <img src={backIcon} alt="back" className="" />
             <p className="text-14 ">Back</p>
           </button>
-          <div className="w-full grid grid-cols-2 p-lg gap-md mb-xl">
+          <div className=" grid md:grid-cols-2 p-lg gap-md mb-xl">
             <img
               src={imageUrl}
               alt={product.name}
               className="w-full max-h-screen"
             />
-            <div className="flex flex-col py-lg px-lg mr-lg   align-end justify-start ">
+            <div className="flex flex-col py-lg px-lg mr-lg   lg:align-end justify-start ">
               <div className="flex flex-col align-start mr-lg justify-start">
-                <h1 className="text-lg uppercase font-light">{product.name}</h1>
+                <h1 className="text-lg uppercase font-light mb-sm">
+                  {product.name}
+                </h1>
                 <p className="text-14 mt-0">{price} EUR</p>
+
+                <p className="uppercase text-14 mt-lg">
+                  Storage ¿how much space do oyu need?
+                </p>
+                <StoragePicker
+                  storages={product.storageOptions}
+                  setStoragePicked={setStorage}
+                  storagePcked={storage}
+                />
                 <p className="uppercase text-14 mt-lg">
                   color. pick your favourite.
                 </p>
@@ -102,14 +111,7 @@ function Product() {
                   colorPicked={color}
                 />
                 <p className="text-sm mt-xs">{color}</p>
-                <p className="uppercase text-14 mt-lg">
-                  Storage ¿how much space do oyu need?
-                </p>
-                <StoragePicker
-                  storages={product.storageOptions}
-                  setStoragePicked={setStorage}
-                  storagePcked={storage}
-                />
+
                 <Button onClick={handleAddToCart} disabled={!color || !storage}>
                   {isAddedToCartProducts(product.id)
                     ? "Already added to cart!"
@@ -120,35 +122,7 @@ function Product() {
           </div>
           <div className="w-full mt-lg mb-xl">
             <h2 className="text-20 uppercase font-light">Specifications</h2>
-            <div className="w-full flex flex-col mt-lg text-sm">
-              <Specification label="brand" value={product.brand} />
-              <Specification label="name" value={product.name} />
-              <Specification label="description" value={product.description} />
-              <Specification label="screen" value={product.specs.screen} />
-              <Specification
-                label="resolution"
-                value={product.specs.resolution}
-              />
-              <Specification
-                label="processor"
-                value={product.specs.processor}
-              />
-              <Specification
-                label="main camera"
-                value={product.specs.mainCamera}
-              />
-              <Specification
-                label="selfie camera"
-                value={product.specs.selfieCamera}
-              />
-              <Specification label="batery" value={product.specs.battery} />
-              <Specification label="os" value={product.specs.os} />
-              <Specification
-                label="screen refresh rate"
-                value={product.specs.screenRefreshRate}
-                classes=" border-y-small"
-              />
-            </div>
+            <Specifications product={product} />
           </div>
           <div className="w-full mt-xl py-lg">
             <h3 className="text-20 uppercase font-light">Similar Products</h3>

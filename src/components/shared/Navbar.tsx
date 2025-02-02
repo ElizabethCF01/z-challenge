@@ -7,7 +7,7 @@ function Navbar() {
   const { cartProducts } = useContextElement();
 
   return (
-    <div className="flex align-center justify-between w-full ">
+    <div className="flex align-center justify-between py-xl px-xl">
       <Link to="/">
         <img src={logo} alt="MBST logo" />
       </Link>

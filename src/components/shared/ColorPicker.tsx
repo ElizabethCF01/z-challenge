@@ -10,7 +10,7 @@ export default function ColorPicker({
   setColorPicked: (color: string) => void;
 }) {
   return (
-    <div className="flex gap-xs">
+    <div className="flex gap-sm">
       {colors.map((color) => (
         <div
           onClick={() => setColorPicked(color.name)}

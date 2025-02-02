@@ -10,16 +10,16 @@ export default function StoragePicker({
   setStoragePicked: (storage: string) => void;
 }) {
   return (
-    <div className="flex gap-xs">
+    <div className="flex p-1">
       {storages.map((storage) => (
         <div
           key={storage.capacity}
-          className={`flex justify-center align-center border-large ease size-14 cursor-pointer ${
+          className={`flex justify-center align-center border-large ease size-14 cursor-pointer hover:z-2 ${
             storagePcked === storage.capacity
-              ? ""
+              ? "z-2"
               : "border-light-gray hover:border-black"
           }`}
-          style={{ height: "60px", width: "90px" }}
+          style={{ height: "60px", width: "90px", marginLeft: "-2px" }}
           onClick={() => setStoragePicked(storage.capacity)}
         >
           {storage.capacity}

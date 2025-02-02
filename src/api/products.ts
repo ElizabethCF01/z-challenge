@@ -8,7 +8,6 @@ export async function getProducts(query?: string) {
     const response = (
       await axiosClient.get(`${Api.product}?limit=20&offset=0${search}`)
     ).data;
-    console.log("response.data", response);
     return response;
   } catch (error) {
     console.error(error);
@@ -19,7 +18,6 @@ export async function getProducts(query?: string) {
 export async function getProductById(id: string) {
   try {
     const response = (await axiosClient.get(`${Api.product}/${id}`)).data;
-    console.log("response.data", response);
     return response;
   } catch (error) {
     console.error(error);
