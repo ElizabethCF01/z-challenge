@@ -14,6 +14,7 @@ export default function StoragePicker({
       {storages.map((storage) => (
         <div
           key={storage.capacity}
+          data-testid="storage-picker-btn"
           className={`flex justify-center align-center border-large ease size-14 cursor-pointer hover:z-2 ${
             storagePcked === storage.capacity
               ? "z-2"
@@ -21,6 +22,7 @@ export default function StoragePicker({
           }`}
           style={{ height: "60px", width: "90px", marginLeft: "-2px" }}
           onClick={() => setStoragePicked(storage.capacity)}
+          data-price={storage.price}
         >
           {storage.capacity}
         </div>

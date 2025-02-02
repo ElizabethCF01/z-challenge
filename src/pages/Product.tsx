@@ -84,10 +84,10 @@ function Product() {
           <div className=" grid md:grid-cols-2 p-lg gap-md mb-xl">
             <img
               src={imageUrl}
-              alt={product.name}
+              alt={`${product.name} ${color}`}
               className="w-full max-h-screen"
             />
-            <div className="flex flex-col py-lg px-lg mr-lg   lg:align-end justify-start ">
+            <div className="flex flex-col py-lg px-lg mr-lg lg:align-end justify-start ">
               <div className="flex flex-col align-start mr-lg justify-start">
                 <h1 className="text-lg uppercase font-light mb-sm">
                   {product.name}

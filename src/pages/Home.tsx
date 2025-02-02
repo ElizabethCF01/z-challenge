@@ -95,7 +95,7 @@ function Home() {
             <ProductCard
               key={product.id + i}
               product={product}
-              className={cardProductClass(i)}
+              className={cardProductClass(i) + " item-" + i}
             />
           ))}
       </div>

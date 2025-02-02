@@ -4,9 +4,15 @@ import axiosClient from "../lib/axios";
 
 export async function getProducts(query?: string) {
   try {
-    const search = query ? `&search=${query}` : "";
+    const search = query ? query : "";
     const response = (
-      await axiosClient.get(`${Api.product}?limit=20&offset=0${search}`)
+      await axiosClient.get(Api.product, {
+        params: {
+          search,
+          limit: 20,
+          offset: 0,
+        },
+      })
     ).data;
     return response;
   } catch (error) {

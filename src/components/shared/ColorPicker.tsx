@@ -15,11 +15,13 @@ export default function ColorPicker({
         <div
           onClick={() => setColorPicked(color.name)}
           key={color.name}
+          data-testid="color-picker-btn"
           className={`flex justify-center align-center p-1 border-large cursor-pointer ease ${
             colorPicked === color.name
               ? ""
               : "border-light-gray hover:border-black"
           }`}
+          data-color={color.name}
         >
           <div
             className="size-lg  "

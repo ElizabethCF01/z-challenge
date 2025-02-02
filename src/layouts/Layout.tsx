@@ -2,10 +2,6 @@ import { Outlet } from "react-router";
 import Navbar from "../components/shared/Navbar";
 
 const Layout = () => {
-  // const style = ({ isActive }: NavLinkRenderProps) => ({
-  //   fontWeight: isActive ? "bold" : "normal",
-  // });
-
   return (
     <>
       <Navbar></Navbar>

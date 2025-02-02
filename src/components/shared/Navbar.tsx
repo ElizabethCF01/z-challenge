@@ -11,7 +11,11 @@ function Navbar() {
       <Link to="/">
         <img src={logo} alt="MBST logo" />
       </Link>
-      <Link to="/cart" className="flex gap-xs font-light align-center">
+      <Link
+        data-testid="cart-btn"
+        to="/cart"
+        className="flex gap-xs font-light align-center"
+      >
         <img className="size-18" src={cartIcon} alt="cart" />{" "}
         {cartProducts.length}
       </Link>
