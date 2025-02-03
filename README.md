@@ -1,50 +1,77 @@
-# React + TypeScript + Vite
+# Mobile Phone E-commerce Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React-based e-commerce application for mobile phones, built with TypeScript and Vite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Product listing with search functionality
+- Detailed product pages
+- Shopping cart
+- Color and storage selection for products
+- Similar products recommendation
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The project follows a typical React application structure:
 
-- Configure the top-level `parserOptions` property like this:
+- `src/`: Contains the main source code
+  - `components/`: Reusable React components
+  - `pages/`: Main page components
+  - `context/`: React context for state management
+  - `interfaces/`: TypeScript interfaces
+  - `api/`: API call functions
+  - `lib/`: Utility functions and configurations like axios instance
+  - `routes/`: Application routing
+- `tests/`: Contains test files
+- `public/`: Public assets
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Setup
+
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Set up environment variables:
+   Create a `.env` file in the root directory and add:
+   ```
+   VITE_BASE_URL=your_api_base_url
+   VITE_API_KEY=your_api_key
+   ```
+
+## Running the Application
+
+To start the development server:
+
+```
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Building for Production
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+To create a production build:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+npm run build
+```
+
+## Running Tests
+
+To run the test suite:
+
+```
+npm test
+```
+
+## Technologies Used
+
+- React
+- TypeScript
+- Vite
+- React Router
+- Axios for API calls
+- Vitest and React Testing Library for testing
+
+## Contributing
+
+Contributions are welcome. Please feel free to submit a Pull Request.
